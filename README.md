@@ -12,3 +12,9 @@ https://stackoverflow.com/questions/63916507/c-cmake-project-structure-for-lib-a
 
 https://stackoverflow.com/questions/2360734/whats-a-good-directory-structure-for-larger-c-projects-using-makefile
 
+```bash
+cd build
+cmake ..
+make -j8
+ctest
+```
