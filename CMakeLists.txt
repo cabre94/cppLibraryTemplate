@@ -6,7 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# enable_testing()	# TODO: capaz tenga que mover esto mas tarde
+# TODO: use variable to activate tests
+enable_testing()	# TODO: no entiendo porque esto es necesario aca
+
+add_subdirectory(myLib)
 
 # add_subdirectory(myApp)
-add_subdirectory(myLib)

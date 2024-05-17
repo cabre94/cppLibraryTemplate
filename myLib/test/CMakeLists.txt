@@ -1,19 +1,26 @@
-# GTest include code would
-# go somewhere in here
+# find_package(PkgConfig)	# might be useful in future
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+# pkg_search_module(dss-common REQUIRED IMPORTED_TARGET dss-common)	# PkgConfig
 
 set(TEST_NAME tests_myLib)
 
-
 add_executable(
 	${TEST_NAME}
-	test_myLib.cpp
+	test_myLib.cpp	#TODO: No me gusta tener que agregar los cpp a mano uno por uno
 )
 
 target_link_libraries(
 	${TEST_NAME}
 	PRIVATE
 	GTest::GTest
+	${GTEST_LIBRARIES}
 	${PROJECT_NAME}
 )
 
-add_test(${TEST_NAME} ${TEST_NAME})
+# add_test(${TEST_NAME} ${TEST_NAME}) # this doesnt find tests in nested folders
+
+# find tests in nested folders
+include(GoogleTest)
+gtest_discover_tests(${TEST_NAME} XML_OUTPUT_DIR ${CMAKE_BINARY_DIR}/reports)

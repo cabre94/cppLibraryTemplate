@@ -1,4 +1,8 @@
 project(myLib)
 
+
 add_subdirectory(src)
-# add_subdirectory(test)
+
+# TODO: use variable to activate tests
+enable_testing()	# TODO: capaz tenga que mover esto mas tarde
+add_subdirectory(test)
