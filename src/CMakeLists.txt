@@ -8,14 +8,14 @@
 # .a STATIC
 # .so SHARED, .dll on Windows
 
-# add_library(${PROJECT_NAME} STATIC myLib.cpp)
+# add_library(${PROJECT_NAME} STATIC Complex.cpp)
 
 add_library(${PROJECT_NAME} STATIC)
 
 target_sources(
 	${PROJECT_NAME}
 	PRIVATE
-	myLib.cpp
+	Complex.cpp
 )
 
 # definitions of CMAKE_INSTALL_LIBDIR, CMAKE_INSTALL_INCLUDEDIR and others
@@ -26,7 +26,7 @@ include(GNUInstallDirs)
 #     message(
 #         STATUS
 #         "CMAKE_INSTALL_PREFIX is not set\n"
-#         "Default value: ${CMAKE_INSTALL_PREFIX}\n"
+#         "Default value: ${CMAKE_INSTALL_PREFIX}\n" # --> /usr/local
 #         "Will set it to ${CMAKE_SOURCE_DIR}/install"
 #     )
 #     set(CMAKE_INSTALL_PREFIX
@@ -44,7 +44,7 @@ include(GNUInstallDirs)
 
 # without it public headers won't get installed
 set(public_headers
-	${PROJECT_SOURCE_DIR}/include/myLib.h
+	${PROJECT_SOURCE_DIR}/include/Complex.h
 )
 
 # Option 1
@@ -65,17 +65,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${public_headers
 # endforeach()
 
 
-
-
-message(PROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
-message(CMAKE_CURRENT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
-message(CMAKE_CURRENT_SOURCE_DIR/src="${CMAKE_CURRENT_SOURCE_DIR}/src")
-message(CMAKE_INSTALL_INCLUDEDIR="${CMAKE_INSTALL_INCLUDEDIR}")
-message(PROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
-
-
-# target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
 target_include_directories(${PROJECT_NAME}
     PRIVATE
         # where the library itself will look for its internal headers
@@ -89,17 +78,19 @@ target_include_directories(${PROJECT_NAME}
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-# Certainly, just building the library is already enough to be able to link to it, but we want to do it in the most comfortable way: not by providing paths to its binaries and headers from both build and sources directories, but by installing just the artifacts we need and using find_package command.
+# Certainly, just building the library is already enough to be able to link to
+# it, but we want to do it in the most comfortable way: not by providing paths
+# to its binaries and headers from both build and sources directories, but by 
+# installing just the artifacts we need and using find_package command.
 
-# With find_package you let CMake to worry about finding the library, its public headers and configuring all that. Here’s a more detailed documentation about how find_package works, and here’s how you can create a CMake config of your own.
+# With find_package you let CMake to worry about finding the library, its public
+# headers and configuring all that. Here’s a more detailed documentation about 
+# how find_package works, and here’s how you can create a CMake config of your own.
+
 
 ########################################################
 #### Here come the actual installation instructions: ###
 ########################################################
-
-message("=====================")
-message(PROJECT_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
-message(CMAKE_INSTALL_INCLUDEDIR="${CMAKE_INSTALL_INCLUDEDIR}")
 
 # install the target and create export-set
 install(TARGETS ${PROJECT_NAME}
@@ -112,15 +103,3 @@ install(TARGETS ${PROJECT_NAME}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME} # include/SomeLibrary
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # include
 )
-
-
-# https://stackoverflow.com/questions/25272866/cmake-make-install-fails-with-file-install-cannot-find-myfile
-# CMake does not support installing from targets defined in sub dirs.
-# If I want to add files from my build dir I have to change
-# INSTALL(FILES Bin/binaryname DESTINATION /opt/myproject/bin)
-# to
-# INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/Bin/binaryname DESTINATION /opt/myproject/bin)
-
-
-
-

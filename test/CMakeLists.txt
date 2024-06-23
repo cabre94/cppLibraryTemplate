@@ -8,7 +8,7 @@ set(TEST_NAME tests_myLib)
 
 add_executable(
 	${TEST_NAME}
-	test_myLib.cpp	#TODO: No me gusta tener que agregar los cpp a mano uno por uno
+	test_myLib.cpp
 )
 
 target_link_libraries(
