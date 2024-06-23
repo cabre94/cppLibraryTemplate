@@ -16,7 +16,7 @@ target_link_libraries(
 	PRIVATE
 	GTest::GTest
 	${GTEST_LIBRARIES}
-	${PROJECT_NAME}
+	${PROJECT_NAME}	# Here add myLib
 )
 
 # add_test(${TEST_NAME} ${TEST_NAME}) # this doesnt find tests in nested folders
