@@ -35,3 +35,8 @@ https://stackoverflow.com/questions/2649334/difference-between-static-and-shared
 # Library
 
 https://decovar.dev/blog/2021/03/08/cmake-cpp-library/
+
+
+cmake -B build -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Release
+
+cmake --build build --config Release
