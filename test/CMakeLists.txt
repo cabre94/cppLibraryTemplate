@@ -11,6 +11,8 @@ add_executable(
 	test_myLib.cpp
 )
 
+target_link_directories(${TEST_NAME} PRIVATE ${CMAKE_BINARY_DIR}/src)
+
 target_link_libraries(
 	${TEST_NAME}
 	PRIVATE
@@ -18,6 +20,12 @@ target_link_libraries(
 	${GTEST_LIBRARIES}
 	${PROJECT_NAME}	# Here add myLib
 )
+
+# Used to Debug
+message(STATUS "test - GTEST_INCLUDE_DIRS: ${GTEST_INCLUDE_DIRS}")
+message(STATUS "test - GTEST_LIBRARIES: ${GTEST_LIBRARIES}")
+message(STATUS "test - PROJECT_NAME: ${PROJECT_NAME}")
+message(STATUS "test - CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 
 # add_test(${TEST_NAME} ${TEST_NAME}) # this doesnt find tests in nested folders
 
