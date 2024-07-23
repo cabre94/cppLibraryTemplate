@@ -81,6 +81,7 @@ jobs:
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
 
     - name: Find Static Libraries
+      if: always()
       run: |
         echo "Searching for .a files..."
         pwd
