@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <Complex.h>
+#include "Complex.h"
 
 TEST(myLibTests, Test_ComplexConstructor)
 {
