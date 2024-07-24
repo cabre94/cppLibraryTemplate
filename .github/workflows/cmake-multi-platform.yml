@@ -88,7 +88,7 @@ jobs:
         pwd
         echo "Searching for .a files..."
         find ${{ steps.strings.outputs.build-output-dir }} -name '*.a'
-        find ${{ steps.strings.outputs.build-output-dir }} -name '*myLib*
+        find ${{ steps.strings.outputs.build-output-dir }} -name '*myLib*'
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
