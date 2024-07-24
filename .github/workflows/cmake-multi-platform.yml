@@ -78,7 +78,7 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DGTEST_ROOT=$GTEST_ROOT
+        -DGTEST_ROOT=${{ env.GTEST_ROOT }}
         -S ${{ github.workspace }}
 
     - name: Build
