@@ -1,4 +1,9 @@
 # find_package(PkgConfig)	# might be useful in future
+# Specify the path to GTest if provided
+if(DEFINED ENV{GTEST_ROOT})
+  set(GTEST_ROOT $ENV{GTEST_ROOT})
+endif()
+
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/include)  # Asegúrate de incluir el directorio con los headers
