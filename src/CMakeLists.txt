@@ -78,6 +78,11 @@ target_include_directories(${PROJECT_NAME}
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
+# Used to Debug
+message(STATUS "src - PROJECT_NAME: ${PROJECT_NAME}")
+message(STATUS "src - PROJECT_SOURCE_DIR: ${PROJECT_SOURCE_DIR}")
+message(STATUS "src - CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+
 # Certainly, just building the library is already enough to be able to link to
 # it, but we want to do it in the most comfortable way: not by providing paths
 # to its binaries and headers from both build and sources directories, but by 
