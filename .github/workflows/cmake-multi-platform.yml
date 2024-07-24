@@ -56,7 +56,12 @@ jobs:
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
-    - name: Install Google Test
+    # - name: Install Google Test
+    #   run: |
+    #     sudo apt-get install -y libgtest-dev
+
+    - name: Install dependencies on Linux
+      if: runner.os == 'Linux'
       run: |
         sudo apt-get install -y libgtest-dev
 
