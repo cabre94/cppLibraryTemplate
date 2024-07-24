@@ -68,7 +68,7 @@ jobs:
         cd googletest
         cmake -B build
         cmake --build build --target install
-        echo "GTEST_ROOT=$(pwd)/build" >> $GITHUB_ENV
+        echo "GTEST_ROOT=C:/Program Files (x86)/googletest-distribution" >> $env:GITHUB_ENV
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
