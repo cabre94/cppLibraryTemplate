@@ -7,14 +7,6 @@ namespace myLib {
 
 Complex::Complex(double re_, double im_) : re(re_), im(im_) {}
 
-inline double Complex::Re() const {return re;}
-
-inline void Complex::Re(double re_) {re = re_;}
-
-inline double Complex::Im() const {return im;}
-
-inline void Complex::Im(double im_) {im = im_;}
-
 std::ostream& operator<<(std::ostream &out, const Complex &c){
 
 	if(c.re == 0 && c.im ==0)
@@ -55,7 +47,6 @@ Complex operator/(const Complex& c1, const Complex& c2){
 	return { (c1.Re()*c2.Re() + c1.Im()*c2.Im()) / den,
 			 (c1.Im()*c2.Re() - c1.Re()*c2.Im()) / den};
 }
-
 
 
 int multiply(int a, int b){

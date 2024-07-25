@@ -12,11 +12,11 @@ class Complex {
 public:
 	Complex(double re_, double im_);
 
-	double Re() const;
-	void Re(double re_);
+	double Re() const {return re;}
+	void Re(double re_) {re = re_;}
 
-	double Im() const;
-	void Im(double im_);
+	double Im() const {return im;}
+	void Im(double im_) {im = im_;}
 
 	friend std::ostream& operator<<(std::ostream &out, const Complex &c);
 
