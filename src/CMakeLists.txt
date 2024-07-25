@@ -19,7 +19,7 @@ target_sources(
 )
 
 # definitions of CMAKE_INSTALL_LIBDIR, CMAKE_INSTALL_INCLUDEDIR and others
-include(GNUInstallDirs)
+include(GNUInstallDirs)	# TODO: Windows?
 
 # overwrite default installation path to install the artifacts into install folder
 # if(DEFINED CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
